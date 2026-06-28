@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Security Headers ===== -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com https://pokeapi.co data:; connect-src 'self' https://pokeapi.co https://raw.githubusercontent.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;" />
+
+  <!-- ===== PWA ===== -->
+  <link rel="manifest" href="/pokedex/manifest.webmanifest" />
+  <meta name="theme-color" content="#E94560" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pokédex" />
+  <link rel="apple-touch-icon" href="/pokedex/icons/icon-192.png" />
+
+  <!-- ===== Favicon ===== -->
+  <link rel="icon" type="image/svg+xml" href="/pokedex/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/pokedex/icons/icon-192.png" />
+
+  <!-- ===== SEO ===== -->
+  <title>Pokédex — Browse All Pokémon | Stats, Types &amp; Abilities</title>
+  <meta name="description" content="Explore the complete National Pokédex. Search all Pokémon by name or number, filter by type, and view full stats, abilities, height, weight, and shiny forms." />
+  <meta name="keywords" content="pokédex, pokémon, national pokédex, pokémon stats, pokémon types, fan site" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourusername.github.io/pokedex/" />
+
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourusername.github.io/pokedex/" />
+  <meta property="og:title" content="Pokédex — Browse All Pokémon" />
+  <meta property="og:description" content="Explore the complete National Pokédex with stats, types, abilities and shiny forms." />
+  <meta property="og:image" content="https://yourusername.github.io/pokedex/icons/icon-512.png" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Pokédex — Browse All Pokémon" />
+  <meta name="twitter:description" content="Explore the complete National Pokédex with stats, types, abilities and shiny forms." />
+  <meta name="twitter:image" content="https://yourusername.github.io/pokedex/icons/icon-512.png" />
+
+  <!-- ===== Performance ===== -->
+  <link rel="preconnect" href="https://pokeapi.co" crossorigin />
+  <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/pokedex/sw.js', { scope: '/pokedex/' })
+          .catch(function(err) { console.warn('SW registration failed:', err); });
+      });
+    }
+  </script>
+</body>
+</html>
